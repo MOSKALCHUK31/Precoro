@@ -1,5 +1,5 @@
 <template>
-    <div class="switcher" :class="isActive" @click="handleToggle">
+    <div class="switcher" :class="isActive" :disabled="false" @click="handleToggle">
         <div class="switcher__holder"></div>
         <div class="switcher__track"></div>
     </div>
@@ -7,9 +7,21 @@
 
 <script>
 export default {
+    props: {
+        disabled: {
+            type: Boolean,
+            required: false,
+            default: false
+        }
+    },
     computed: {
         isActive() {
-            if (this.active) return 'is-active'
+            let classString = ''
+
+            if (this.disabled) classString += 'disabled '
+            if (this.active) classString += 'is-active'
+
+            return classString
         }
     },
     data() {
@@ -19,12 +31,7 @@ export default {
     },
     methods: {
         handleToggle() {
-            if (this.active) {
-                this.active = false
-                return
-            }
-
-            this.active = true
+           if (!this.disabled) this.active = !this.active
         }
     }
 }
@@ -41,6 +48,16 @@ export default {
         .switcher__track {
             left: calc(100% - 20px);
         }
+    }
+
+    &.disabled {
+        .switcher__holder {
+            background: #f6f4f4;
+        };
+
+        .switcher__track {
+            background: #415ADA;
+        };
     }
 
     &__holder {

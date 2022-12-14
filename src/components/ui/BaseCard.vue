@@ -21,7 +21,7 @@ export default {
 .base-card {
     position: relative;
     width: 870px;
-    margin: 40px auto 0 auto;
+    margin: 40px auto;
     box-shadow: 0 8px 16px rgba(54, 62, 113, 0.24);
     border-radius: 16px;
     background: #fff;

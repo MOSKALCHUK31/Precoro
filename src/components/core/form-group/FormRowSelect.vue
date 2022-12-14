@@ -1,11 +1,16 @@
 <template>
     <div class="form__row">
         <label class="form__label" :for="id">{{ label }}</label>
-        <input :id="id" :type="type" :name="inputName" :placeholder="placeholder" :disabled="isDisabled">
+        <select :id="id" :name="name" :disabled="disabled">
+            <option v-for="option in options" value="option">{{ option }}</option>
+        </select>
+        <icon-rectangle-down></icon-rectangle-down>
     </div>
 </template>
 
 <script>
+import IconRectangleDown from '../../icons/IconRectangleDown'
+
 export default {
     props: {
         id: {
@@ -16,17 +21,13 @@ export default {
             type: String,
             required: true
         },
-        type: {
+        name: {
             type: String,
             required: true
         },
-        inputName: {
-            type: String,
+        options: {
+            type: Array,
             required: true
-        },
-        placeholder: {
-            type: String,
-            required: false
         },
         disabled: {
             type: Boolean,
@@ -34,10 +35,8 @@ export default {
             default: false
         }
     },
-    computed: {
-        isDisabled() {
-            return this.disabled
-        }
+    components: {
+        IconRectangleDown
     }
 }
 </script>
@@ -58,12 +57,12 @@ export default {
     }
 }
 
-input {
+select {
+    appearance: none;
     padding-right: 8px;
     padding-left: 8px;
     width: 100%;
     height: 40px;
-    appearance: none;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
     font-weight: 400;
@@ -82,8 +81,13 @@ input {
         }
     }
 
-    &:disabled {
-        background: #f6f4f4;
+    & + svg {
+        position: absolute;
+        right: 0;
+    }
+
+    &[disabled] {
+        background-color: #f6f4f4;
     }
 }
 </style>

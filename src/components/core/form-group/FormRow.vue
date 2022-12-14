@@ -14,7 +14,7 @@ export default {
     },
     computed: {
         rowType() {
-            return 'form__row_type_' + this.type
+            if(this.type) return 'form__row_type_' + this.type
         }
     }
 }

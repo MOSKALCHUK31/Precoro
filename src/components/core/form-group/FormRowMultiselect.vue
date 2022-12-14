@@ -1,7 +1,7 @@
 <template>
     <div class="form__row">
         <label class="form__label">{{ label }}</label>
-        <multiselect class="companies-multiselect" v-model="value" :limit="2" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Pick some" label="name" track-by="name">
+        <multiselect class="companies-multiselect" v-model="value" :limit="2" :options="options" :multiple="true" :close-on-select="false" :clear-on-select="false" :preserve-search="true" placeholder="Pick some" label="name" track-by="name" :disabled="disabled">
             <template slot="selection" slot-scope="{ values, search, isOpen }"><span class="multiselect__single" v-if="values.length &amp;&amp; !isOpen">{{ values.length }} options selected</span></template>
         </multiselect>
     </div>
@@ -21,6 +21,11 @@ export default {
         inputName: {
             type: String,
             required: true,
+        },
+        disabled: {
+            type: Boolean,
+            required: false,
+            default: false
         }
     },
     data() {

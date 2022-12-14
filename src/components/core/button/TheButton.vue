@@ -1,5 +1,8 @@
 <template>
-    <button :class="className">
+    <router-link v-if="link" :to="to" :class="className">
+        <slot></slot>
+    </router-link>
+    <button v-else :class="className">
         <slot></slot>
     </button>
 </template>
@@ -16,6 +19,15 @@ export default {
             type: String,
             required: false,
             default: 'blue'
+        },
+        link: {
+            type: Boolean,
+            required: false,
+            default: false
+        },
+        to: {
+            type: String,
+            required: false
         }
     },
     computed: {
@@ -43,9 +55,10 @@ input.button {
 }
 
 .button {
+    display: flex;
+    align-items: center;
     font-family: 'Inter', sans-serif;
     position: relative;
-    display: inline-block;
     padding-left: 16px;
     padding-right: 16px;
     margin: 0;
