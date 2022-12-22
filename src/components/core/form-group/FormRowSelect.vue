@@ -87,7 +87,7 @@ select {
     }
 
     &[disabled] {
-        background-color: #f6f4f4;
+        background-color: #F4F4FF;
     }
 }
 </style>

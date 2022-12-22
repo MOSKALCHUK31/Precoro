@@ -98,8 +98,8 @@ input[type=checkbox] {
     &:disabled {
         + label {
             &::before {
-                background-color: #b1abab;
-                border-color: #b1abab;
+                background-color: #F4F4FF;
+                border-color: #F4F4FF;
             }
         }
     }

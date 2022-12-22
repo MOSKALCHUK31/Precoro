@@ -83,7 +83,7 @@ input {
     }
 
     &:disabled {
-        background: #f6f4f4;
+        background: #F4F4FF;
     }
 }
 </style>

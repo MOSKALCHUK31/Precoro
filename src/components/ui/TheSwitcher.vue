@@ -52,11 +52,11 @@ export default {
 
     &.disabled {
         .switcher__holder {
-            background: #f6f4f4;
+            background: #F4F4FF;
         };
 
         .switcher__track {
-            background: #415ADA;
+            //background: #415ADA;
         };
     }
 
