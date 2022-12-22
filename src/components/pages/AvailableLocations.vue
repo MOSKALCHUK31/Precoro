@@ -37,7 +37,7 @@
             </accordion>
         </div>
         <div class="locations__actions">
-            <the-button link to="/docs" size="medium" color="blue">Next Step</the-button>
+            <the-button link to="/docs" size="medium" color="blue" @click="handleSubmit">Next Step</the-button>
         </div>
     </div>
 </template>
@@ -61,6 +61,9 @@ export default {
         handleSetQuantity(payload) {
             if (payload) this.count = this.count + 1
             else this.count = this.count - 1
+        },
+        handleSubmit() {
+            this.$store.dispatch('HANDLE_CONFIRM_LOCATIONS_ACTION')
         }
     }
 }

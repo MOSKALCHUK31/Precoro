@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="info__actions">
-                <the-button link to="/locations" size="medium" color="blue">Next Step</the-button>
+                <the-button link to="/locations" size="medium" color="blue" @click="handleSubmit">Next Step</the-button>
             </div>
         </div>
     </div>
@@ -56,6 +56,11 @@ export default {
         ...mapGetters({
             disabled: 'getInputState'
         })
+    },
+    methods: {
+        handleSubmit() {
+            this.$store.dispatch('HANDLE_CONFIRM_MAIN_INFO_ACTION')
+        }
     }
 }
 </script>

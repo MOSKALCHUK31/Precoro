@@ -205,7 +205,8 @@ export default {
     },
     methods: {
         handleSubmit() {
-            this.$store.dispatch('HANDLE_DISABLE_INPUTS__ACTION')
+            this.$store.dispatch('HANDLE_DISABLE_INPUTS_ACTION')
+            this.$store.dispatch('HANDLE_CONFIRM_DOCS_ROLES_ACTION')
         }
     },
     computed: {

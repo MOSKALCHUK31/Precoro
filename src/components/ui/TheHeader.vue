@@ -6,20 +6,28 @@
             </div>
             <div class="header__content">
                 <div class="header-navigation">
-                    <router-link to="/main" class="header-navigation__item">
-                        <div class="header-navigation__icon">1</div>
+                    <router-link to="/main" class="header-navigation__item" :class="getNavigationState.isMainInfoConfirmed ? 'header-navigation__item-confirmed' : ''">
+                        <div class="header-navigation__icon">
+                            <span v-if="!getNavigationState.isMainInfoConfirmed">1</span>
+                        </div>
                         <div class="header-navigation__title">Main Info</div>
                     </router-link>
-                    <router-link to="/locations" class="header-navigation__item">
-                        <div class="header-navigation__icon">2</div>
+                    <router-link to="/locations" class="header-navigation__item" :class="getNavigationState.isLocationsConfirmed ? 'header-navigation__item-confirmed' : ''">
+                        <div class="header-navigation__icon">
+                            <span v-if="!getNavigationState.isLocationsConfirmed">2</span>
+                        </div>
                         <div class="header-navigation__title">Available Locations</div>
                     </router-link>
-                    <router-link to="/docs" class="header-navigation__item">
-                        <div class="header-navigation__icon">3</div>
+                    <router-link to="/docs" class="header-navigation__item" :class="getNavigationState.isDocsConfirmed ? 'header-navigation__item-confirmed' : ''">
+                        <div class="header-navigation__icon">
+                            <span v-if="!getNavigationState.isDocsConfirmed">3</span>
+                        </div>
                         <div class="header-navigation__title">Available Documents Custom Fields</div>
                     </router-link>
-                    <router-link to="/roles" class="header-navigation__item">
-                        <div class="header-navigation__icon">4</div>
+                    <router-link to="/roles" class="header-navigation__item" :class="getNavigationState.isRolesConfirmed ? 'header-navigation__item-confirmed' : ''">
+                        <div class="header-navigation__icon">
+                            <span v-if="!getNavigationState.isRolesConfirmed">4</span>
+                        </div>
                         <div class="header-navigation__title">Roles</div>
                     </router-link>
                 </div>
@@ -27,6 +35,18 @@
         </div>
     </header>
 </template>
+
+<script>
+import { mapGetters } from 'vuex'
+
+export default {
+    computed: {
+        ...mapGetters({
+            getNavigationState: 'getNavigationState'
+        })
+    }
+}
+</script>
 
 <style scoped lang="scss">
 .header {
@@ -49,7 +69,7 @@
     display: flex;
     gap: 24px;
 
-    &__item {
+    &__item{
         position: relative;
         display: flex;
         align-items: center;
@@ -70,6 +90,18 @@
             .header-navigation__icon,
             .header-navigation__title {
                 color: #415ADA;
+            }
+        }
+    }
+
+    &__item {
+        &-confirmed {
+            .header-navigation__icon {
+                background-image: url('../../assets/builder/checked.svg');
+                background-position: 50%;
+                background-repeat: no-repeat;
+                background-size: 12px 10px;
+                background-color: #415ADA;
             }
         }
     }
