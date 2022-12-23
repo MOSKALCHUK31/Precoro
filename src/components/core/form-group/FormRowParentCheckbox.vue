@@ -3,10 +3,15 @@
         <div class="dropdown__heading" @click="handleToggleDropdown">
             <input type="checkbox" :id="parentId" :name="parentName" :disabled="disabled" @click="handleToggleCheckbox">
             <label class="dropdown__label" :for="parentId">{{ parentLabel }}</label>
-            <icon-chevron-down></icon-chevron-down>
+            <icon-chevron-down :color="active ? '#415ADA' : '#1D2452'"></icon-chevron-down>
         </div>
         <div class="dropdown__content">
-            <ul class="dropdown__list">
+            <div v-if="!childElements" class="dropdown__slot">
+                <slot>
+                    default slot
+                </slot>
+            </div>
+            <ul v-else class="dropdown__list">
                 <li class="dropdown__item" v-for="child in childElements" :key="child.id">
                     <input type="checkbox" :id="child.id" :name="child.name" :disabled="disabled" @click="handleToggleCheckbox">
                     <label class="dropdown__label" :for="child.id">{{ child.label }}</label>
@@ -35,7 +40,7 @@ export default {
         },
         childElements: {
             type: Array,
-            required: true
+            required: false
         },
         disabled: {
             type: Boolean,
@@ -76,45 +81,124 @@ export default {
 <style scoped lang="scss">
 
 .dropdown {
-    position: relative;
 
     &.is-active {
-        svg {
-            transform: rotate(180deg)
+        & > .dropdown__heading {
+            svg {
+                transform: rotate(180deg);
+            }
         }
 
-        .dropdown__heading {
-            margin-bottom: 8px;
-        }
-
-        .dropdown__content {
+        & > .dropdown__content {
             display: block;
         }
     }
 
-    &__content {
-        display: none;
-    }
 
-    &__list {}
-
-    &__item {
-        margin-left: 16px;
+    &__heading {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         padding: 8px 0;
 
-        &:not(:last-of-type) {
-            border-bottom: 1px solid rgba(29, 36, 82, 0.1);
+        &::before {
+            content: '';
+            display: block;
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 10;
+            width: calc(100% - 26px);
+            height: 1px;
+            background: rgba(#1D24521A, .1);
         }
     }
 
     &__label {
-        & + svg {
+        //padding: 8px 0;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 18px;
+    }
+
+    &__content {
+        display: none;
+        margin-left: 8px;
+    }
+
+    &__slot {}
+
+    //&__list {}
+
+    &__item {
+        position: relative;
+        padding: 8px 0;
+
+        &:before {
+            content: '';
+            display: block;
             position: absolute;
             right: 0;
+            bottom: 0;
+            z-index: 10;
+            width: calc(100% - 26px);
+            height: 1px;
+            background: rgba(#1D24521A, .1);
+        }
 
+        &:not(:last-of-type) {
+            //margin-bottom: 8px;
         }
     }
 }
+//.dropdown {
+//    position: relative;
+//
+//    &.is-active {
+//        & > .dropdown__heading {
+//            margin-bottom: 8px;
+//
+//            svg {
+//                transform: rotate(180deg);
+//            }
+//        }
+//
+//        & > .dropdown__content {
+//            display: block;
+//        }
+//    }
+//
+//    &__heading {
+//        //padding: 8px 0;
+//        //border-bottom: 1px solid green;
+//    }
+//
+//    &__content {
+//        display: none;
+//    }
+//
+//    &__item {
+//        margin-left: 16px;
+//        padding: 8px 0;
+//
+//        &:not(:last-of-type) {
+//            border-bottom: 1px solid rgba(29, 36, 82, 0.1);
+//        }
+//    }
+//
+//    &__label {
+//        & + svg {
+//            position: absolute;
+//            right: 0;
+//
+//        }
+//    }
+//
+//    &__slot {
+//        margin-left: 8px;
+//    }
+//}
 
 
 input[type=checkbox] {
@@ -169,7 +253,4 @@ input[type=checkbox] {
         }
     }
 }
-
-
-
 </style>

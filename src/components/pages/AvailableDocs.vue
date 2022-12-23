@@ -17,16 +17,16 @@
                                            <form-row-checkbox id="select-all-classes" label="Select All" name="select-all-classes" :disabled="disabled"></form-row-checkbox>
                                        </div>
                                        <ul class="category-tile__list">
-                                           <li class="category-tile__item">
+                                           <li class="category-tile__item category-tile__item_with_border">
                                                <form-row-parent-checkbox parent-id="class-1" parent-name="class-1" parent-label="Class 1" :child-elements="firstClassChilds" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
                                            </li>
-                                           <li class="category-tile__item">
+                                           <li class="category-tile__item category-tile__item_with_border">
                                                <form-row-parent-checkbox parent-id="class-2" parent-name="class-2" parent-label="Class 2" :child-elements="secondClassChilds" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
                                            </li>
-                                           <li class="category-tile__item">
+                                           <li class="category-tile__item category-tile__item_with_padding category-tile__item_with_border">
                                                <form-row-checkbox id="class-3" label="Class 3" name="class-3" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
                                            </li>
-                                           <li class="category-tile__item">
+                                           <li class="category-tile__item category-tile__item_with_padding">
                                                <form-row-checkbox id="class-4" label="Class 4" name="class-4" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
                                            </li>
                                        </ul>
@@ -40,19 +40,17 @@
                                         </div>
                                        <ul class="category-tile__list">
                                            <li class="category-tile__item">
-                                               <form-row-parent-checkbox parent-id="developer-1" parent-name="developer-1" parent-label="Developer" :child-elements="developersChilds" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
+                                               <form-row-parent-checkbox parent-id="developers" parent-name="developers" parent-label="Developers" :disabled="disabled" @changeEvent="handleSetQuantity">
+                                                   <form-row-parent-checkbox parent-id="sub-dev-lvl-2" parent-label="2nd Sub-Developers" parent-name="sub-dev-lvl-2" :disabled="disabled" @changeEvent="handleSetQuantity">
+                                                       <form-row-parent-checkbox parent-id="sub-dev-lvl-3" parent-label="3nd Sub-Developers" parent-name="sub-dev-lvl-3" :child-elements="developersChilds" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
+                                                   </form-row-parent-checkbox>
+                                               </form-row-parent-checkbox>
                                            </li>
-                                           <li class="category-tile__item">
-                                               <form-row-checkbox id="developer-2" label="2nd Sub-Developers" name="Developer-2" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
+                                           <li class="category-tile__item category-tile__item_with_padding category-tile__item_with_border">
+                                               <form-row-checkbox id="class-3-department" label="Class 3" name="class-3-department" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
                                            </li>
-                                           <li class="category-tile__item">
-                                               <form-row-checkbox id="developer-3" label="3nd Sub-Developers" name="Developer-3" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
-                                           </li>
-                                           <li class="category-tile__item">
-                                               <form-row-checkbox id="developer-4" label="Developers-4" name="developer-4" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
-                                           </li>
-                                           <li class="category-tile__item">
-                                               <form-row-checkbox id="developer-5" label="Developers-5" name="developer-5" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
+                                           <li class="category-tile__item category-tile__item_with_padding">
+                                               <form-row-checkbox id="class-4-department" label="Class 4" name="class-4-department" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
                                            </li>
                                        </ul>
                                    </div>
@@ -70,10 +68,10 @@
                                            <li class="category-tile__item">
                                                <form-row-parent-checkbox parent-id="class-2-dcf" parent-name="class-2-dcf" parent-label="Class 2 DCF" :child-elements="secondClassChilds" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
                                            </li>
-                                           <li class="category-tile__item">
+                                           <li class="category-tile__item category-tile__item_with_padding category-tile__item_with_border">
                                                <form-row-checkbox id="class-3" label="Class 3 DCF" name="class-3-dcf" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
                                            </li>
-                                           <li class="category-tile__item">
+                                           <li class="category-tile__item category-tile__item_with_padding">
                                                <form-row-checkbox id="class-4" label="Class 4 DCF" name="class-4-dcf" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
                                            </li>
                                        </ul>
@@ -120,9 +118,8 @@ export default {
                 { id: 'class-2-child-3', label: 'Class 2 child 3', name: 'class-2-child-3' },
             ],
             developersChilds: [
-                { id: 'dev-1-child-1', label: 'dev 1 child 1', name: 'dev-1-child-1' },
-                { id: 'dev-1-child-2', label: 'dev 1 child 2', name: 'dev-1-child-2' },
-                { id: 'dev-1-child-3', label: 'dev 1 child 3', name: 'dev-1-child-3' },
+                { id: 'ios', label: 'iOS & Android Devs', name: 'ios' },
+                { id: '4th', label: '4th Sub-Developers', name: '4th' },
             ],
             firstDCFChilds: [
                 { id: 'class-1-child-1', label: 'Class 1 child 1', name: 'class-1-child-1' },
@@ -210,10 +207,30 @@ export default {
     }
 
     &__item {
-        padding: 8px 0;
+        &_with {
+            &_padding {
+                padding: 8px 0;
+            }
+
+            &_border {
+                position: relative;
+
+                &::before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    right: 0;
+                    bottom: 0;
+                    z-index: 10;
+                    width: calc(100% - 26px);
+                    height: 1px;
+                    background: rgba(#1D24521A, .1);
+                }
+            }
+        }
 
         &:not(:last-of-type) {
-            border-bottom: 1px solid rgba(29, 36, 82, 0.1);
+            margin-bottom: 8px;
         }
     }
 }
