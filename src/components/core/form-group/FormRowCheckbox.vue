@@ -1,7 +1,7 @@
 <template>
     <div class="form__row">
-        <input type="checkbox" :id="id" :name="name" :disabled="disabled">
-        <label class="form__label" :for="id" @click="handleClick">{{ label }}</label>
+        <input type="checkbox" :id="id" :name="name" :disabled="disabled" @change="handleChange">
+        <label class="form__label" :for="id">{{ label }}</label>
     </div>
 </template>
 
@@ -32,7 +32,7 @@ export default {
         }
     },
     methods: {
-        handleClick() {
+        handleChange() {
             this.isChecked = !this.isChecked
 
             this.$emit('changeEvent', this.isChecked)

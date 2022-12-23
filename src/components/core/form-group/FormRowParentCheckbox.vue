@@ -1,7 +1,7 @@
 <template>
     <div class="dropdown" :class="hasActiveClass">
         <div class="dropdown__heading" @click="handleToggleDropdown">
-            <input type="checkbox" :id="parentId" :name="parentName" :disabled="disabled" @click="handleToggleCheckbox">
+            <input type="checkbox" :id="parentId" :name="parentName" :disabled="disabled" @change="handleToggleCheckbox">
             <label class="dropdown__label" :for="parentId">{{ parentLabel }}</label>
             <icon-chevron-down :color="active ? '#415ADA' : '#1D2452'"></icon-chevron-down>
         </div>
@@ -13,7 +13,7 @@
             </div>
             <ul v-else class="dropdown__list">
                 <li class="dropdown__item" v-for="child in childElements" :key="child.id">
-                    <input type="checkbox" :id="child.id" :name="child.name" :disabled="disabled" @click="handleToggleCheckbox">
+                    <input type="checkbox" :id="child.id" :name="child.name" :disabled="disabled" @change="handleToggleCheckbox">
                     <label class="dropdown__label" :for="child.id">{{ child.label }}</label>
                 </li>
             </ul>

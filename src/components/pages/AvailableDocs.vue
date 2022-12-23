@@ -63,16 +63,16 @@
                                        </div>
                                        <ul class="category-tile__list">
                                            <li class="category-tile__item">
-                                               <form-row-parent-checkbox parent-id="class-1-dcf" parent-name="class-1-dcf" parent-label="Class 1 DCF" :child-elements="firstClassChilds" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
+                                               <form-row-parent-checkbox parent-id="class-1-dcf" parent-name="class-1-dcf" parent-label="Class 1" :child-elements="firstClassChilds" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
                                            </li>
                                            <li class="category-tile__item">
-                                               <form-row-parent-checkbox parent-id="class-2-dcf" parent-name="class-2-dcf" parent-label="Class 2 DCF" :child-elements="secondClassChilds" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
+                                               <form-row-parent-checkbox parent-id="class-2-dcf" parent-name="class-2-dcf" parent-label="Class 2" :child-elements="secondClassChilds" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
                                            </li>
                                            <li class="category-tile__item category-tile__item_with_padding category-tile__item_with_border">
-                                               <form-row-checkbox id="class-3" label="Class 3 DCF" name="class-3-dcf" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
+                                               <form-row-checkbox id="class-3" label="Class 3" name="class-3-dcf" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
                                            </li>
                                            <li class="category-tile__item category-tile__item_with_padding">
-                                               <form-row-checkbox id="class-4" label="Class 4 DCF" name="class-4-dcf" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
+                                               <form-row-checkbox id="class-4" label="Class 4" name="class-4-dcf" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
                                            </li>
                                        </ul>
                                    </div>
