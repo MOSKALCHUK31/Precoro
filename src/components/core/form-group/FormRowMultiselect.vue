@@ -67,6 +67,13 @@ export default {
         }
     }
 
+    &--disabled {
+        .multiselect__select,
+        .multiselect__tags {
+            background: #F4F4FF;
+        }
+    }
+
     &__select {
         position: absolute;
         right: 0;
