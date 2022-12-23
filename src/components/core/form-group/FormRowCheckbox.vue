@@ -1,6 +1,6 @@
 <template>
     <div class="form__row">
-        <input type="checkbox" :id="id" :name="name" :disabled="disabled" @change="handleChange">
+        <input type="checkbox" :id="id" :name="name" :disabled="disabled" :checked="checked" @change="handleChange">
         <label class="form__label" :for="id">{{ label }}</label>
     </div>
 </template>
@@ -24,6 +24,11 @@ export default {
             type: Boolean,
             required: false,
             default: false
+        },
+        checked: {
+            type: Boolean,
+            required: false,
+            default: false
         }
     },
     data() {
@@ -32,10 +37,10 @@ export default {
         }
     },
     methods: {
-        handleChange() {
+        handleChange(event) {
             this.isChecked = !this.isChecked
 
-            this.$emit('changeEvent', this.isChecked)
+            this.$emit('changeEvent', this.isChecked, event)
         }
     }
 }

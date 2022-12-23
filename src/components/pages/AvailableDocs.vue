@@ -14,20 +14,20 @@
                                    <div class="category-tile">
                                        <div class="category-tile__title">Classes</div>
                                        <div class="category-tile__select-all">
-                                           <form-row-checkbox id="select-all-classes" label="Select All" name="select-all-classes" :disabled="disabled"></form-row-checkbox>
+                                           <form-row-checkbox id="select-all-classes" label="Select All" name="select-all-classes" :disabled="disabled" @changeEvent="handleSetClasses"></form-row-checkbox>
                                        </div>
                                        <ul class="category-tile__list">
                                            <li class="category-tile__item category-tile__item_with_border">
-                                               <form-row-parent-checkbox parent-id="class-1" parent-name="class-1" parent-label="Class 1" :child-elements="firstClassChilds" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
+                                               <form-row-parent-checkbox parent-id="class-1" parent-name="class-1" parent-label="Class 1" :child-elements="firstClassChilds" :disabled="disabled" :checked="isCheckedAllClasses" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
                                            </li>
                                            <li class="category-tile__item category-tile__item_with_border">
-                                               <form-row-parent-checkbox parent-id="class-2" parent-name="class-2" parent-label="Class 2" :child-elements="secondClassChilds" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
+                                               <form-row-parent-checkbox parent-id="class-2" parent-name="class-2" parent-label="Class 2" :child-elements="secondClassChilds" :disabled="disabled" :checked="isCheckedAllClasses" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
                                            </li>
                                            <li class="category-tile__item category-tile__item_with_padding category-tile__item_with_border">
-                                               <form-row-checkbox id="class-3" label="Class 3" name="class-3" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
+                                               <form-row-checkbox id="class-3" label="Class 3" name="class-3" :disabled="disabled" :checked="isCheckedAllClasses" @changeEvent="handleSetQuantity"></form-row-checkbox>
                                            </li>
                                            <li class="category-tile__item category-tile__item_with_padding">
-                                               <form-row-checkbox id="class-4" label="Class 4" name="class-4" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
+                                               <form-row-checkbox id="class-4" label="Class 4" name="class-4" :disabled="disabled" :checked="isCheckedAllClasses" @changeEvent="handleSetQuantity"></form-row-checkbox>
                                            </li>
                                        </ul>
                                    </div>
@@ -36,21 +36,21 @@
                                    <div class="category-tile">
                                         <div class="category-tile__title">Departments</div>
                                         <div class="category-tile__select-all">
-                                            <form-row-checkbox id="select-all-departments" label="Select All" name="select-all-departments" :disabled="disabled"></form-row-checkbox>
+                                            <form-row-checkbox id="select-all-departments" label="Select All" name="select-all-departments" :disabled="disabled" @changeEvent="handleSetDepartments"></form-row-checkbox>
                                         </div>
                                        <ul class="category-tile__list">
                                            <li class="category-tile__item">
-                                               <form-row-parent-checkbox parent-id="developers" parent-name="developers" parent-label="Developers" :disabled="disabled" @changeEvent="handleSetQuantity">
-                                                   <form-row-parent-checkbox parent-id="sub-dev-lvl-2" parent-label="2nd Sub-Developers" parent-name="sub-dev-lvl-2" :disabled="disabled" @changeEvent="handleSetQuantity">
-                                                       <form-row-parent-checkbox parent-id="sub-dev-lvl-3" parent-label="3nd Sub-Developers" parent-name="sub-dev-lvl-3" :child-elements="developersChilds" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
+                                               <form-row-parent-checkbox parent-id="developers" parent-name="developers" parent-label="Developers" :disabled="disabled" :checked="isCheckedAllDepartments" @changeEvent="handleSetQuantity">
+                                                   <form-row-parent-checkbox parent-id="sub-dev-lvl-2" parent-label="2nd Sub-Developers" parent-name="sub-dev-lvl-2" :disabled="disabled" :checked="isCheckedAllDepartments" @changeEvent="handleSetQuantity">
+                                                       <form-row-parent-checkbox parent-id="sub-dev-lvl-3" parent-label="3nd Sub-Developers" parent-name="sub-dev-lvl-3" :child-elements="developersChilds" :disabled="disabled" :checked="isCheckedAllDepartments" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
                                                    </form-row-parent-checkbox>
                                                </form-row-parent-checkbox>
                                            </li>
                                            <li class="category-tile__item category-tile__item_with_padding category-tile__item_with_border">
-                                               <form-row-checkbox id="class-3-department" label="Class 3" name="class-3-department" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
+                                               <form-row-checkbox id="class-3-department" label="Class 3" name="class-3-department" :disabled="disabled" :checked="isCheckedAllDepartments" @changeEvent="handleSetQuantity"></form-row-checkbox>
                                            </li>
                                            <li class="category-tile__item category-tile__item_with_padding">
-                                               <form-row-checkbox id="class-4-department" label="Class 4" name="class-4-department" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
+                                               <form-row-checkbox id="class-4-department" label="Class 4" name="class-4-department" :disabled="disabled" :checked="isCheckedAllDepartments" @changeEvent="handleSetQuantity"></form-row-checkbox>
                                            </li>
                                        </ul>
                                    </div>
@@ -59,20 +59,20 @@
                                    <div class="category-tile">
                                        <div class="category-tile__title">DCF 3</div>
                                        <div class="category-tile__select-all">
-                                           <form-row-checkbox id="select-all-dcf" label="Select All" name="select-all-dcf" :disabled="disabled"></form-row-checkbox>
+                                           <form-row-checkbox id="select-all-dcf" label="Select All" name="select-all-dcf" :disabled="disabled" @changeEvent="handleSetDCF"></form-row-checkbox>
                                        </div>
                                        <ul class="category-tile__list">
                                            <li class="category-tile__item">
-                                               <form-row-parent-checkbox parent-id="class-1-dcf" parent-name="class-1-dcf" parent-label="Class 1" :child-elements="firstClassChilds" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
+                                               <form-row-parent-checkbox parent-id="class-1-dcf" parent-name="class-1-dcf" parent-label="Class 1" :child-elements="firstClassChilds" :disabled="disabled" :checked="isCheckedAllDCF" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
                                            </li>
                                            <li class="category-tile__item">
-                                               <form-row-parent-checkbox parent-id="class-2-dcf" parent-name="class-2-dcf" parent-label="Class 2" :child-elements="secondClassChilds" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
+                                               <form-row-parent-checkbox parent-id="class-2-dcf" parent-name="class-2-dcf" parent-label="Class 2" :child-elements="secondClassChilds" :disabled="disabled" :checked="isCheckedAllDCF" @changeEvent="handleSetQuantity"></form-row-parent-checkbox>
                                            </li>
                                            <li class="category-tile__item category-tile__item_with_padding category-tile__item_with_border">
-                                               <form-row-checkbox id="class-3" label="Class 3" name="class-3-dcf" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
+                                               <form-row-checkbox id="class-3" label="Class 3" name="class-3-dcf" :disabled="disabled" :checked="isCheckedAllDCF" @changeEvent="handleSetQuantity"></form-row-checkbox>
                                            </li>
                                            <li class="category-tile__item category-tile__item_with_padding">
-                                               <form-row-checkbox id="class-4" label="Class 4" name="class-4-dcf" :disabled="disabled" @changeEvent="handleSetQuantity"></form-row-checkbox>
+                                               <form-row-checkbox id="class-4" label="Class 4" name="class-4-dcf" :disabled="disabled" :checked="isCheckedAllDCF" @changeEvent="handleSetQuantity"></form-row-checkbox>
                                            </li>
                                        </ul>
                                    </div>
@@ -107,6 +107,9 @@ export default {
     data() {
         return {
             count: 0,
+            isCheckedAllClasses: false,
+            isCheckedAllDepartments: false,
+            isCheckedAllDCF: false,
             firstClassChilds: [
                 { id: 'class-1-child-1', label: 'Class 1 child 1', name: 'class-1-child-1' },
                 { id: 'class-1-child-2', label: 'Class 1 child 2', name: 'class-1-child-2' },
@@ -130,7 +133,7 @@ export default {
                 { id: 'dcf-1-child-1', label: 'Dcf 1 child 1', name: 'dcf-1-child-1' },
                 { id: 'dcf-1-child-2', label: 'Dcf 1 child 2', name: 'dcf-1-child-2' },
                 { id: 'dcf-1-child-3', label: 'Dcf 1 child 3', name: 'dcf-1-child-3' },
-            ],
+            ]
         }
     },
     methods: {
@@ -140,6 +143,43 @@ export default {
         },
         handleSubmit() {
             this.$store.dispatch('HANDLE_CONFIRM_DOCS_ACTION')
+        },
+        handleSetClasses(payload, event) {
+            const childElements = event.currentTarget.closest('.category-tile__select-all').nextSibling.childNodes
+
+            for(let child of childElements) {
+                const childArr = child.querySelectorAll('input')
+
+                for (let childInput of childArr) {
+                    // if (childInput.hasAttribute('data-checked')) return
+
+                    childInput.click()
+                }
+            }
+
+            this.isCheckedAllClasses = payload
+        },
+        handleSetDepartments(payload, event) {
+            const childElements = event.currentTarget.closest('.category-tile__select-all').nextSibling.childNodes
+
+            for(let child of childElements) {
+                const childArr = child.querySelectorAll('input')
+
+                for (let childInput of childArr) childInput.click()
+            }
+
+            this.isCheckedAllDepartments = payload
+        },
+        handleSetDCF(payload, event) {
+            const childElements = event.currentTarget.closest('.category-tile__select-all').nextSibling.childNodes
+
+            for(let child of childElements) {
+                const childArr = child.querySelectorAll('input')
+
+                for (let childInput of childArr) childInput.click()
+            }
+
+            this.isCheckedAllDCF = payload
         }
     }
 }

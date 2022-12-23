@@ -1,8 +1,8 @@
 <template>
     <div class="dropdown" :class="hasActiveClass">
         <div class="dropdown__heading" @click="handleToggleDropdown">
-            <input type="checkbox" :id="parentId" :name="parentName" :disabled="disabled" @change="handleToggleCheckbox">
-            <label class="dropdown__label" :for="parentId">{{ parentLabel }}</label>
+            <input type="checkbox" :id="parentId" :name="parentName" :disabled="disabled" :checked="checked" @change="handleToggleCheckbox" @click="event => event.stopPropagation()">
+            <label class="dropdown__label" :for="parentId" @click="event => event.stopPropagation()">{{ parentLabel }}</label>
             <icon-chevron-down :color="active ? '#415ADA' : '#1D2452'"></icon-chevron-down>
         </div>
         <div class="dropdown__content">
@@ -13,7 +13,7 @@
             </div>
             <ul v-else class="dropdown__list">
                 <li class="dropdown__item" v-for="child in childElements" :key="child.id">
-                    <input type="checkbox" :id="child.id" :name="child.name" :disabled="disabled" @change="handleToggleCheckbox">
+                    <input type="checkbox" :id="child.id" :name="child.name" :disabled="disabled" :checked="checked" @change="handleToggleCheckbox" @click="event => event.stopPropagation()">
                     <label class="dropdown__label" :for="child.id">{{ child.label }}</label>
                 </li>
             </ul>
@@ -46,6 +46,11 @@ export default {
             type: Boolean,
             required: false,
             default: false
+        },
+        checked: {
+            type: Boolean,
+            required: false,
+            default: false
         }
     },
     components: {
@@ -67,6 +72,7 @@ export default {
             this.active = !this.active
         },
         handleToggleCheckbox(event) {
+            event.stopPropagation()
             const target = event.currentTarget
 
             target.toggleAttribute('data-checked')
@@ -152,54 +158,6 @@ export default {
         }
     }
 }
-//.dropdown {
-//    position: relative;
-//
-//    &.is-active {
-//        & > .dropdown__heading {
-//            margin-bottom: 8px;
-//
-//            svg {
-//                transform: rotate(180deg);
-//            }
-//        }
-//
-//        & > .dropdown__content {
-//            display: block;
-//        }
-//    }
-//
-//    &__heading {
-//        //padding: 8px 0;
-//        //border-bottom: 1px solid green;
-//    }
-//
-//    &__content {
-//        display: none;
-//    }
-//
-//    &__item {
-//        margin-left: 16px;
-//        padding: 8px 0;
-//
-//        &:not(:last-of-type) {
-//            border-bottom: 1px solid rgba(29, 36, 82, 0.1);
-//        }
-//    }
-//
-//    &__label {
-//        & + svg {
-//            position: absolute;
-//            right: 0;
-//
-//        }
-//    }
-//
-//    &__slot {
-//        margin-left: 8px;
-//    }
-//}
-
 
 input[type=checkbox] {
     appearance: none;
