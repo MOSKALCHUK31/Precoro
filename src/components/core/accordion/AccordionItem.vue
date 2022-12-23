@@ -1,5 +1,5 @@
 <template>
-    <li class="accordion__item is-active" :class="activeClass">
+    <li class="accordion__item" :class="activeClass">
         <div class="accordion-tile">
             <div class="accordion-tile__heading" @click="handleToggle">
                 <div class="accordion-tile__title">{{ title }}</div>
